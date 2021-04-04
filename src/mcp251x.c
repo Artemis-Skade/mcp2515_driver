@@ -1255,7 +1255,12 @@ static const struct net_device_ops mcp251x_netdev_ops = {
 	.ndo_stop = mcp251x_stop,
 	.ndo_start_xmit = mcp251x_hard_start_xmit,
 	.ndo_change_mtu = can_change_mtu,
+	.ndo_do_ioctl = do_ioctl,
 };
+
+static int do_ioctl(struct net_device *dev, struct ifreq *ifr, int cmd){
+    printk(KERN_INFO "ioctl called\n");
+}
 
 static const struct of_device_id mcp251x_of_match[] = {
 	{
